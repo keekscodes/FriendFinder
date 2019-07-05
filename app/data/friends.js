@@ -1,5 +1,5 @@
 // Object holding friends
-var friends = [{
+export let friends = [{
         name: 'Britney',
         photo: 'https://live.staticflickr.com/5216/5387285442_5584d1600d_z.jpg',
         scores: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
