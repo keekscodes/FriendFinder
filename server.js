@@ -8,21 +8,21 @@ var app = express();
 
 var PORT = process.env.PORT || 8080;
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, './app/public')));
 
-// parse application/json
-app.use(bodyParser.json())
-
-app.use(function(req, res) {
-    res.setHeader('Content-Type', 'text/plain')
-    res.write('you posted:\n')
-    res.end(JSON.stringify(req.body, null, 2))
-})
+// Add middleware for parsing incoming request bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
 
 
 // API and HTML routes
-require("./app/routing/apiRoutes.js");
-require("./app/routing/htmlRoutes.js");
+// require("./app/routing/apiRoutes.js");
+// require("./app/routing/htmlRoutes.js");
+
+
+require(path.join(__dirname, './app/routing/apiRoutes'))(app);
+require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
