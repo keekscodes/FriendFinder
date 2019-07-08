@@ -162,14 +162,40 @@
         <div class="text-center">
             <button id="submit" type="submit" class="btn btn-success btn-lg">Submit</button>
         </div>
-        <div class="container">
-            <p>
-                <a href="/api/friends">API Friends List</a> |
-                <a href="https://github.com/kamueller2/FriendFinder.git">GitHub Repo</a>
-            </p>
-        </div>
+    </div>
+    <div class="container">
+        <p>
+            <a href="/api/friends">API Friends List</a> |
+            <a href="https://github.com/kamueller2/FriendFinder.git">GitHub Repo</a>
+        </p>
+    </div>
 
-        <!-- Modal after survey completion -->
+    <div class="modal" id="executeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Friend Match</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Your new friend's name is: <span id="bffName"></span></h4>
+                    <img id="bffImg">
+                    <!-- <p>Modal body text goes here.</p> -->
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- Modal after survey completion
         <div id="bestFriendModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -186,54 +212,51 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> -->
 
 
 
-    <script type="text/javascript">
-        $('#submit').on('click', function(event) {
-            event.preventDefault();
-            // Form validation
-            var valid = true;
-            if ($("#name").val() === "" || $("#photo").val() === "") {
-                valid = false;
-            } else if ($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
-                valid = false;
-            }
-            if (valid === true) {
-                var newUser = {
-                    name: $("#name").val().trim(),
-                    photo: $("#photo").val().trim(),
-                    scores: [
-                        $("#question1").val(),
-                        $("#question2").val(),
-                        $("#question3").val(),
-                        $("#question4").val(),
-                        $("#question5").val(),
-                        $("#question6").val(),
-                        $("#question7").val(),
-                        $("#question8").val(),
-                        $("#question9").val(),
-                        $("#question10").val()
-                    ]
-                };
-                var currentURL = window.location.origin;
-                // Ajax call for receiving response after POST req
-                $.post(currentURL + "/api/friends", newUser, function(data) {
-                    $("#bestFriend").text(data.name);
-                    $("#bestFriendPhoto").attr("src", data.photo);
 
-                    // Show modal
-                    $("#bestFriendModal").modal("toggle");
-                });
+<script type="text/javascript">
+    $('#submit').on('click', function(event) {
+        event.preventDefault();
+        // Form validation
+        var valid = true;
+        if ($("#name").val() === "" || $("#photo").val() === "") {
+            valid = false;
+        } else if ($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
+            valid = false;
+        }
+        if (valid === true) {
+            var newUser = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    $("#question1").val(),
+                    $("#question2").val(),
+                    $("#question3").val(),
+                    $("#question4").val(),
+                    $("#question5").val(),
+                    $("#question6").val(),
+                    $("#question7").val(),
+                    $("#question8").val(),
+                    $("#question9").val(),
+                    $("#question10").val()
+                ]
+            };
+            var currentURL = window.location.origin;
+            // Ajax call for receiving response after POST req
+            $.post(currentURL + "/api/friends", newUser, function(data) {
+                $("#bffName").text(data.name);
+                $("#bffImg").attr("src", data.photo);
 
-            } else {
-                // If a required field is missing, show alert
-                alert("Survey is incomplete!");
-            }
-        });
-    </script>
-</body>
+                // Show modal
+                $("#executeModal").modal("toggle");
+            });
 
-</html>
+        } else {
+            // If a required field is missing, show alert
+            alert("Survey is incomplete!");
+        }
+    });
+</script>
