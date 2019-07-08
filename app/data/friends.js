@@ -1,5 +1,5 @@
 // Object holding friends
-export let friends = [{
+let friends = [{
         name: 'Britney',
         photo: 'https://live.staticflickr.com/5216/5387285442_5584d1600d_z.jpg',
         scores: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
@@ -29,4 +29,6 @@ export let friends = [{
         photo: 'https://nyppagesix.files.wordpress.com/2018/09/michael-b-jordan1.jpg?quality=90&strip=all&strip=all',
         scores: `[4, 5, 4, 2, 5, 5, 3, 5, 1, 1]`
     }
-]
+];
+
+module.exports = friends;
