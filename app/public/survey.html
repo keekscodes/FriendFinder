@@ -11,6 +11,11 @@
     <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" href="../../app/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js" integrity="sha256-ywN/tj+hfHxivU0KIDrKwL6lu3A8rrt2vnPIRkiM9z8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -177,8 +182,6 @@
         </div>
     </div>
 
-    <!-- jQuery link -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 
     <script type="text/javascript">
@@ -215,6 +218,8 @@
                     $("#bestFriendPhoto").attr("src", data.photo);
                     $("#bestFriendModal").modal("toggle");
                 });
+
+                $('.modal').modal();
             } else {
                 // If a required field is missing, show alert
                 alert("Survey is incomplete!");
