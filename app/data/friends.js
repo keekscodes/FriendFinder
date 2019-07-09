@@ -27,7 +27,7 @@ let friends = [{
     {
         name: 'Michael',
         photo: 'https://nyppagesix.files.wordpress.com/2018/09/michael-b-jordan1.jpg?quality=90&strip=all&strip=all',
-        scores: `[4, 5, 4, 2, 5, 5, 3, 5, 1, 1]`
+        scores: [4, 5, 4, 2, 5, 5, 3, 5, 1, 1]
     }
 ];
 
