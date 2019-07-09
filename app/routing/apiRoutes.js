@@ -7,7 +7,7 @@ module.exports = function(app) {
     });
 
     app.post("/api/friends", function(request, response) {
-        console.log(request.body.scores);
+        // console.log(request.body.scores);
 
         var user = request.body;
 
