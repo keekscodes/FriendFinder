@@ -18,10 +18,7 @@ app.use(bodyParser.json());
 
 // API and HTML routes
 
-app.use(express.static('./public'));
-
-// require(path.join(__dirname, './app/routing/apiRoutes'))(app);
-// require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
+app.use(express.static('./app/public'));
 
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
